@@ -4,7 +4,6 @@ const galleryContainer = document.querySelector(`.gallery`);
 const elementsGallery = createElementGallery(galleryItems);
 
 galleryContainer.insertAdjacentHTML(`beforeend`, elementsGallery);
-galleryContainer.addEventListener(`click`, onGalleryContainerClick);
 
 function createElementGallery(galleryItems) {
   return galleryItems
@@ -24,27 +23,10 @@ function createElementGallery(galleryItems) {
     .join("");
 }
 
-// function onGalleryContainerClick(evt) {
-//   evt.preventDefault();
-//   if (!evt.target.classList.contains("gallery__image")) {
-//     return;
-//   }
-//   const currentImgUrl = evt.target.dataset.source;
-
-//   instance = basicLightbox.create(`<img src="${currentImgUrl}"/>`, {
-//     onShow: (instance) => {
-//       window.addEventListener("keydown", onEscKeyPress);
-//     },
-//     onClose: (instance) => {
-//       window.removeEventListener("keydown", onEscKeyPress);
-//     },
-//   });
-//   instance.show();
-// }
-
-// function onEscKeyPress(evt) {
-//   if (evt.code !== "Escape") return;
-//   instance.close();
-// }
+const gallery = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionPosition: "bottom",
+  captionDelay: 250,
+});
 
 console.log(galleryItems);
